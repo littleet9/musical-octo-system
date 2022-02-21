@@ -22,21 +22,18 @@ public class RegistryHandler {
 
 
     // register block
-    public static final RegistryObject<Block> COPPER_ORE = BLOCKS.register("rock_block", () ->
+    public static final RegistryObject<Block> ROCK_BLOCK = BLOCKS.register("rock_block", () ->
         new Block(
                 Block.Properties
-                        .of(Material.IRON)
-                        .hardnessAndResistance(5.0f, 6.0f)
+                        .of(Material.STONE)
                         .sound(SoundType.STONE)
-                        .harvestLevel(1)
-                        .harvestTool(ToolType.PICKAXE)
         )
     );
 
     // register item
-    public static final RegistryObject<Item> COPPER = ITEMS.register("copper", () ->
+    public static final RegistryObject<Item> ROCK = ITEMS.register("rock", () ->
             new Item(
-                    new Item.Properties().group(ItemGroup.MATERIALS)
+                    new Item.Properties()
             )
     );
 }
