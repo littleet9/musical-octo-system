@@ -1,28 +1,12 @@
 package com.example.examplemod;
 
-import com.mojang.authlib.GameProfile;
 import net.minecraft.client.Minecraft;
-import net.minecraft.commands.arguments.MessageArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.ServerFunctionManager;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.network.ServerPlayerConnection;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraft.world.entity.EntityType;
@@ -34,13 +18,9 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.RegistryObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -51,16 +31,10 @@ public class ExampleMod
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-    private static final ToIntFunction<BlockState> lightEmission = (p_60929_) -> { return 15; };
-    public static final RegistryObject<Block> ROCK_BLOCK = BLOCKS.register("rock_block", () -> {
-        return new Block(BlockBehaviour.Properties.of(Material.STONE).lightLevel(lightEmission));
-    });
    // private static final ResourceLocation ROCK_BLOCK_LOCATION = new ResourceLocation();
 
 
     public ExampleMod() {
-        BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
 
         // Register the setup method for modloading
