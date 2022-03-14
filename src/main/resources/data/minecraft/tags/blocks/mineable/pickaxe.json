@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "examplemod:rock_block"
+    "examplemod:end_moss_block",
+    "examplemod:end_moss_glowing_block"
   ]
 }

@@ -5,14 +5,11 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.function.ToIntFunction;
 
 public class RegistryHandler {
     // create DeferredRegister objects
@@ -25,23 +22,40 @@ public class RegistryHandler {
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
-
-    // register block
-    public static final RegistryObject<Block> ROCK_BLOCK = BLOCKS.register("rock_block", () ->
-        new Block(
-                Block.Properties
-                        .of(Material.STONE)
-                        .sound(SoundType.WART_BLOCK)
-                        .lightLevel((state) -> 14)
-                        .strength(1)
-                        .requiresCorrectToolForDrops()
+/***************************************
+    End Moss Block
+ ***************************************/
+    public static final RegistryObject<Block> END_MOSS_BLOCK = BLOCKS.register("end_moss_block",
+        () -> new EndMossBlock(Block.Properties
+                    .of(Material.STONE)
+                    .sound(SoundType.WART_BLOCK)
+                    .lightLevel((state) -> 0)
+                    .strength(1)
+                    .requiresCorrectToolForDrops()
         )
     );
-
-    // register item
-    public static final RegistryObject<Item> ROCK_BLOCK_ITEM = ITEMS.register("rock_block", () ->
+    public static final RegistryObject<Item> END_MOSS_BLOCK_ITEM = ITEMS.register("end_moss_block", () ->
+        new BlockItem(
+                END_MOSS_BLOCK.get(),
+                new Item.Properties()
+                        .tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+        )
+    );
+/***************************************
+     End Moss Glowing Block
+ ***************************************/
+    public static final RegistryObject<Block> END_MOSS_GLOWING_BLOCK = BLOCKS.register("end_moss_glowing_block",
+        () -> new EndMossGlowingBlock(Block.Properties
+                .of(Material.STONE)
+                .sound(SoundType.WART_BLOCK)
+                .lightLevel((state) -> 7)
+                .strength(1)
+                .requiresCorrectToolForDrops()
+        )
+    );
+    public static final RegistryObject<Item> END_MOSS_GLOWING_BLOCK_ITEM = ITEMS.register("end_moss_glowing_block", () ->
             new BlockItem(
-                    ROCK_BLOCK.get(),
+                    END_MOSS_GLOWING_BLOCK.get(),
                     new Item.Properties()
                             .tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
             )
