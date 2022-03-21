@@ -80,9 +80,9 @@ public class ExampleMod
     @SubscribeEvent
     public void pickupItem(EntityItemPickupEvent event)
     {
-        String itemName = event.getItem().getItem().getItem().getRegistryName().toString();
-        Component message = new TextComponent("You Picked Up " + itemName);
-        Minecraft.getInstance().gui.getChat().addMessage(message);
+        //String itemName = event.getItem().getItem().getItem().getRegistryName().toString();
+        //Component message = new TextComponent("You Picked Up " + itemName);
+        //Minecraft.getInstance().gui.getChat().addMessage(message);
     }
 
     @SubscribeEvent
