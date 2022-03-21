@@ -1,5 +1,6 @@
 package com.example.examplemod;
 
+import com.example.world.NaturalGeneration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -10,6 +11,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraft.world.entity.EntityType;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -55,6 +57,8 @@ public class ExampleMod
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
+        event.enqueueWork(NaturalGeneration::registerConfiguredFeatures);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
