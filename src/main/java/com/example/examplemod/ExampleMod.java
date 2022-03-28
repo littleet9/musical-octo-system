@@ -55,8 +55,8 @@ public class ExampleMod
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        //LOGGER.info("HELLO FROM PREINIT");
+        //LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
 
         event.enqueueWork(NaturalGeneration::registerConfiguredFeatures);
     }
@@ -78,7 +78,7 @@ public class ExampleMod
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        //LOGGER.info("HELLO from server starting");
     }
 
     @SubscribeEvent
@@ -92,11 +92,11 @@ public class ExampleMod
     @SubscribeEvent
     public void onLivingAttack(LivingAttackEvent event)
     {
-        if(event.getEntity().getType() == EntityType.PLAYER && event.getAmount() != 0)
-        {
-            Component message = new TextComponent("You Took " + event.getAmount() + " Damage");
-            Minecraft.getInstance().gui.getChat().addMessage(message);
-        }
+        //if(event.getEntity().getType() == EntityType.PLAYER && event.getAmount() != 0)
+        //{
+            //Component message = new TextComponent("You Took " + event.getAmount() + " Damage");
+            //Minecraft.getInstance().gui.getChat().addMessage(message);
+        //}
     }
 
 
@@ -107,7 +107,7 @@ public class ExampleMod
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
             // register a new block here
-            LOGGER.info("HELLO from Register Block");
+            //LOGGER.info("HELLO from Register Block");
         }
     }
 }
