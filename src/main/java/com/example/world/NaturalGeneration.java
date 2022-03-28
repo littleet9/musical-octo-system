@@ -29,8 +29,8 @@ import net.minecraftforge.registries.ObjectHolder;
 @Mod.EventBusSubscriber(modid = ExampleMod.MODID, bus= Mod.EventBusSubscriber.Bus.FORGE)
 public class NaturalGeneration {
 
-    public static final int END_VEINSIZE = 10;
-    public static final int END_AMOUNT = 6;
+    public static final int END_VEINSIZE = 64;
+    public static final int END_AMOUNT = 256;
     public static RuleTest IN_ENDSTONE = new TagMatchTest(Tags.Blocks.END_STONES);
     public static PlacedFeature END_MOSS_GENERATION;
 
@@ -41,7 +41,7 @@ public class NaturalGeneration {
                 CountPlacement.of(END_AMOUNT),
                 InSquarePlacement.spread(),
                 BiomeFilter.biome(),
-                HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(265)));
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(57), VerticalAnchor.absolute(265)));
     }
 
     private static <C extends FeatureConfiguration, F extends Feature<C>> PlacedFeature registerPlacedFeature(String registeryName, ConfiguredFeature<C, F> feature, PlacementModifier ... placementModifiers)
