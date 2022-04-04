@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "examplemod:blocks/end_moss_glowing_block_s"
+    "all": "examplemod:blocks/end_moss_light_static_block"
   }
 }

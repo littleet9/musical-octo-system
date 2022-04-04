@@ -3,6 +3,7 @@ package com.example.examplemod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -22,7 +23,14 @@ public class EndMossBlock extends Block
 
     @Override
     public void stepOn(Level p_152431_, BlockPos p_152432_, BlockState p_152433_, Entity p_152434_) {
-        p_152431_.setBlockAndUpdate(p_152432_, RegistryHandler.END_MOSS_GLOWING_BLOCK.get().defaultBlockState());
+        if (p_152434_.getType() == EntityType.PLAYER)
+        {
+            p_152431_.setBlockAndUpdate(p_152432_, RegistryHandler.END_MOSS_LIGHT_BLOCK.get().defaultBlockState());
+        }
+        else
+        {
+            p_152431_.setBlockAndUpdate(p_152432_, RegistryHandler.END_MOSS_GLOWING_BLOCK.get().defaultBlockState());
+        }
     }
 
     @Override

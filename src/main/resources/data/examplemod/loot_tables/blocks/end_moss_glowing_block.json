@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "examplemod:end_moss_glowing_block"
+          "name": "examplemod:end_moss_glowing_static_block"
         }
       ]
     }

@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "examplemod:block/end_moss_glowing_block" }
+    "": { "model": "examplemod:block/end_moss_glowing_static_block" }
   }
 }
