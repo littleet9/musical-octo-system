@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "endmod:blocks/end_moss_light_static_block"
+  }
+}

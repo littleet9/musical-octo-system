@@ -1,10 +1,10 @@
 {
   "replace": false,
   "values": [
-    "examplemod:end_moss_block",
-    "examplemod:end_moss_glowing_block",
-    "examplemod:end_moss_glowing_static_block",
-    "examplemod:end_moss_light_block",
-    "examplemod:end_moss_light_static_block"
+    "endmod:end_moss_block",
+    "endmod:end_moss_glowing_block",
+    "endmod:end_moss_glowing_static_block",
+    "endmod:end_moss_light_block",
+    "endmod:end_moss_light_static_block"
   ]
 }
