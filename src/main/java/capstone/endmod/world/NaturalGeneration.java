@@ -5,13 +5,20 @@ import capstone.endmod.RegistryHandler;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -21,6 +28,9 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import static capstone.endmod.RegistryHandler.MEGA_END_TREE_CONFIGURATION;
+import static net.minecraft.data.worldgen.placement.PlacementUtils.HEIGHTMAP_WORLD_SURFACE;
+
 
 @Mod.EventBusSubscriber(modid = EndModRoot.MODID, bus= Mod.EventBusSubscriber.Bus.FORGE)
 public class NaturalGeneration {
@@ -29,10 +39,22 @@ public class NaturalGeneration {
     public static final int END_AMOUNT = 256;
     public static RuleTest IN_ENDSTONE = new TagMatchTest(Tags.Blocks.END_STONES);
     public static PlacedFeature END_MOSS_GENERATION;
+    public static PlacedFeature MEGA_END_TREE_GENERATION;
 
     public static void registerConfiguredFeatures()
     {
         configureEndMossBlock();
+        configureMegaEndTree();
+    }
+
+    private static void configureMegaEndTree()
+    {
+        TreeConfiguration treeConfig = MEGA_END_TREE_CONFIGURATION.build();
+        MEGA_END_TREE_GENERATION = registerPlacedFeature("mega_end_tree", Feature.TREE.configured(treeConfig),
+                CountPlacement.of(1),
+                InSquarePlacement.spread(),
+                BiomeFilter.biome(),
+                HEIGHTMAP_WORLD_SURFACE);
     }
 
     private static void configureEndMossBlock()
@@ -56,6 +78,7 @@ public class NaturalGeneration {
 
         if (event.getCategory() == Biome.BiomeCategory.THEEND) {
             event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, END_MOSS_GENERATION);
+            event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MEGA_END_TREE_GENERATION);
         }
         else if (event.getCategory() == Biome.BiomeCategory.NETHER) {
 

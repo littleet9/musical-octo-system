@@ -3,12 +3,25 @@ package capstone.endmod;
 import capstone.endmod.blocks.EndMossBlock;
 import capstone.endmod.blocks.EndMossGlowingBlock;
 import capstone.endmod.blocks.EndMossLightBlock;
+import com.google.common.collect.ImmutableList;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -20,13 +33,28 @@ public class RegistryHandler {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, EndModRoot.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, EndModRoot.MODID);
     public static final DeferredRegister<EntityType<?>> MOBS = DeferredRegister.create(ForgeRegistries.ENTITIES, EndModRoot.MODID);
+    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, EndModRoot.MODID);
 
     public static void init() {
         // attach DeferredRegisters to the event bus
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         MOBS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
+
+/***************************************
+    Mega End Tree
+ ***************************************/
+    public static final TreeConfiguration.TreeConfigurationBuilder MEGA_END_TREE_CONFIGURATION = new TreeConfiguration.TreeConfigurationBuilder(
+        BlockStateProvider.simple(Blocks.OBSIDIAN), //Trunk
+        new MegaJungleTrunkPlacer(25, 2, 19),
+        BlockStateProvider.simple(Blocks.LAPIS_BLOCK), //Leaves
+        new MegaJungleFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2),
+        new TwoLayersFeatureSize(1, 1, 2));
+    public static final ConfiguredFeature<TreeConfiguration, ?> MEGA_END_TREE = FeatureUtils.register("mega_end_tree",
+        Feature.TREE.configured((MEGA_END_TREE_CONFIGURATION).decorators(ImmutableList.of(TrunkVineDecorator.INSTANCE, LeaveVineDecorator.INSTANCE)).build()));
+
 
 /***************************************
     End Moss Block
