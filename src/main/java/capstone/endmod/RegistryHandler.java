@@ -17,10 +17,12 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -42,19 +44,6 @@ public class RegistryHandler {
         MOBS.register(FMLJavaModLoadingContext.get().getModEventBus());
         FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
-
-/***************************************
-    Mega End Tree
- ***************************************/
-    public static final TreeConfiguration.TreeConfigurationBuilder MEGA_END_TREE_CONFIGURATION = new TreeConfiguration.TreeConfigurationBuilder(
-        BlockStateProvider.simple(Blocks.OBSIDIAN), //Trunk
-        new MegaJungleTrunkPlacer(25, 2, 19),
-        BlockStateProvider.simple(Blocks.LAPIS_BLOCK), //Leaves
-        new MegaJungleFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2),
-        new TwoLayersFeatureSize(1, 1, 2));
-    public static final ConfiguredFeature<TreeConfiguration, ?> MEGA_END_TREE = FeatureUtils.register("mega_end_tree",
-        Feature.TREE.configured((MEGA_END_TREE_CONFIGURATION).decorators(ImmutableList.of(TrunkVineDecorator.INSTANCE, LeaveVineDecorator.INSTANCE)).build()));
-
 
 /***************************************
     End Moss Block
@@ -131,4 +120,31 @@ public class RegistryHandler {
                             .tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
             )
     );
+
+    /***************************************
+     Mega End Tree
+     ***************************************/
+    public static final TreeConfiguration.TreeConfigurationBuilder MEGA_END_TREE_CONFIGURATION = new TreeConfiguration.TreeConfigurationBuilder(
+            BlockStateProvider.simple(Blocks.OBSIDIAN), //Trunk
+            new MegaJungleTrunkPlacer(24, 2, 19),
+            BlockStateProvider.simple(Blocks.LAPIS_BLOCK), //Leaves
+            new MegaJungleFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2),
+            new TwoLayersFeatureSize(1, 1, 2))
+            .dirt(BlockStateProvider.simple(Blocks.END_STONE));
+    public static final ConfiguredFeature<TreeConfiguration, ?> MEGA_END_TREE = FeatureUtils.register("mega_end_tree",
+            Feature.TREE.configured((MEGA_END_TREE_CONFIGURATION).build()));
+
+    public static final TreeConfiguration.TreeConfigurationBuilder END_TREE_CONFIGURATION = new TreeConfiguration.TreeConfigurationBuilder(
+            BlockStateProvider.simple(Blocks.OBSIDIAN),
+            new ForkingTrunkPlacer(12, 2, 2),
+            BlockStateProvider.simple(Blocks.LAPIS_BLOCK),
+            new AcaciaFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)),
+            new TwoLayersFeatureSize(1, 1, 2))
+            .dirt(BlockStateProvider.simple(Blocks.END_STONE));
+
+    public static final ConfiguredFeature<TreeConfiguration, ?> END_TREE = FeatureUtils.register("end_tree",
+            Feature.TREE.configured((END_TREE_CONFIGURATION).build()));
+
+
+
 }

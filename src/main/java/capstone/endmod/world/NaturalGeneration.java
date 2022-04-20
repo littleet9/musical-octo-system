@@ -28,6 +28,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import static capstone.endmod.RegistryHandler.END_TREE_CONFIGURATION;
 import static capstone.endmod.RegistryHandler.MEGA_END_TREE_CONFIGURATION;
 import static net.minecraft.data.worldgen.placement.PlacementUtils.HEIGHTMAP_WORLD_SURFACE;
 
@@ -40,17 +41,29 @@ public class NaturalGeneration {
     public static RuleTest IN_ENDSTONE = new TagMatchTest(Tags.Blocks.END_STONES);
     public static PlacedFeature END_MOSS_GENERATION;
     public static PlacedFeature MEGA_END_TREE_GENERATION;
+    public static PlacedFeature END_TREE_GENERATION;
 
     public static void registerConfiguredFeatures()
     {
         configureEndMossBlock();
         configureMegaEndTree();
+        configureEndTree();
     }
 
     private static void configureMegaEndTree()
     {
         TreeConfiguration treeConfig = MEGA_END_TREE_CONFIGURATION.build();
         MEGA_END_TREE_GENERATION = registerPlacedFeature("mega_end_tree", Feature.TREE.configured(treeConfig),
+                CountPlacement.of(1),
+                InSquarePlacement.spread(),
+                BiomeFilter.biome(),
+                HEIGHTMAP_WORLD_SURFACE);
+    }
+
+    private static void configureEndTree()
+    {
+        TreeConfiguration treeConfig = END_TREE_CONFIGURATION.build();
+        END_TREE_GENERATION = registerPlacedFeature("end_tree", Feature.TREE.configured(treeConfig),
                 CountPlacement.of(1),
                 InSquarePlacement.spread(),
                 BiomeFilter.biome(),
@@ -79,6 +92,7 @@ public class NaturalGeneration {
         if (event.getCategory() == Biome.BiomeCategory.THEEND) {
             event.getGeneration().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, END_MOSS_GENERATION);
             event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MEGA_END_TREE_GENERATION);
+            event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, END_TREE_GENERATION);
         }
         else if (event.getCategory() == Biome.BiomeCategory.NETHER) {
 
