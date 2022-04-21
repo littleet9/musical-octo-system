@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "endmod:blocks/end_tree_leaves_block"
+  }
+}

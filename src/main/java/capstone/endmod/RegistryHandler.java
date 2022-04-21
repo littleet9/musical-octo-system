@@ -4,15 +4,18 @@ import capstone.endmod.blocks.EndMossBlock;
 import capstone.endmod.blocks.EndMossGlowingBlock;
 import capstone.endmod.blocks.EndMossLightBlock;
 import com.google.common.collect.ImmutableList;
+import net.minecraft.core.BlockPos;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -20,6 +23,7 @@ import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSi
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
@@ -121,29 +125,30 @@ public class RegistryHandler {
             )
     );
 
-    /***************************************
-     Mega End Tree
-     ***************************************/
-    public static final TreeConfiguration.TreeConfigurationBuilder MEGA_END_TREE_CONFIGURATION = new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.OBSIDIAN), //Trunk
-            new MegaJungleTrunkPlacer(24, 2, 19),
-            BlockStateProvider.simple(Blocks.LAPIS_BLOCK), //Leaves
-            new MegaJungleFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2),
-            new TwoLayersFeatureSize(1, 1, 2))
-            .dirt(BlockStateProvider.simple(Blocks.END_STONE));
-    public static final ConfiguredFeature<TreeConfiguration, ?> MEGA_END_TREE = FeatureUtils.register("mega_end_tree",
-            Feature.TREE.configured((MEGA_END_TREE_CONFIGURATION).build()));
+/***************************************
+ End Tree Leaves
+ ***************************************/
+    public static final RegistryObject<Block> END_TREE_LEAVES_BLOCK = BLOCKS.register("end_tree_leaves_block",
+        () -> new Block(Block.Properties
+                .of(Material.LEAVES)
+                .sound(SoundType.AZALEA_LEAVES)
+                .lightLevel((state) -> 0)
+                .strength(0.25F)
+                .noOcclusion()
+                .isViewBlocking(RegistryHandler::never)
 
-    public static final TreeConfiguration.TreeConfigurationBuilder END_TREE_CONFIGURATION = new TreeConfiguration.TreeConfigurationBuilder(
-            BlockStateProvider.simple(Blocks.OBSIDIAN),
-            new ForkingTrunkPlacer(12, 2, 2),
-            BlockStateProvider.simple(Blocks.LAPIS_BLOCK),
-            new AcaciaFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)),
-            new TwoLayersFeatureSize(1, 1, 2))
-            .dirt(BlockStateProvider.simple(Blocks.END_STONE));
-
-    public static final ConfiguredFeature<TreeConfiguration, ?> END_TREE = FeatureUtils.register("end_tree",
-            Feature.TREE.configured((END_TREE_CONFIGURATION).build()));
+        )
+    );
+    public static final RegistryObject<Item> END_TREE_LEAVES_BLOCK_ITEM = ITEMS.register("end_tree_leaves_block", () ->
+            new BlockItem(
+                    END_TREE_LEAVES_BLOCK.get(),
+                    new Item.Properties()
+                            .tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+            )
+    );
+    private static boolean never(BlockState p_50806_, BlockGetter p_50807_, BlockPos p_50808_) {
+        return false;
+    }
 
 
 

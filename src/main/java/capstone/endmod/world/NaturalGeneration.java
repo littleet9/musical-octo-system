@@ -16,8 +16,10 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -28,8 +30,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static capstone.endmod.RegistryHandler.END_TREE_CONFIGURATION;
-import static capstone.endmod.RegistryHandler.MEGA_END_TREE_CONFIGURATION;
+import static capstone.endmod.RegistryHandler.*;
 import static net.minecraft.data.worldgen.placement.PlacementUtils.HEIGHTMAP_WORLD_SURFACE;
 
 
@@ -52,7 +53,13 @@ public class NaturalGeneration {
 
     private static void configureMegaEndTree()
     {
-        TreeConfiguration treeConfig = MEGA_END_TREE_CONFIGURATION.build();
+        TreeConfiguration treeConfig = new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.OBSIDIAN), //Trunk
+                new MegaJungleTrunkPlacer(24, 2, 19),
+                BlockStateProvider.simple(END_TREE_LEAVES_BLOCK.get()), //Leaves
+                new MegaJungleFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), 2),
+                new TwoLayersFeatureSize(1, 1, 2))
+                .dirt(BlockStateProvider.simple(Blocks.END_STONE)).build();
         MEGA_END_TREE_GENERATION = registerPlacedFeature("mega_end_tree", Feature.TREE.configured(treeConfig),
                 CountPlacement.of(1),
                 InSquarePlacement.spread(),
@@ -62,7 +69,13 @@ public class NaturalGeneration {
 
     private static void configureEndTree()
     {
-        TreeConfiguration treeConfig = END_TREE_CONFIGURATION.build();
+        TreeConfiguration treeConfig = new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.OBSIDIAN),
+                new ForkingTrunkPlacer(12, 2, 2),
+                BlockStateProvider.simple(END_TREE_LEAVES_BLOCK.get()),
+                new AcaciaFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0)),
+                new TwoLayersFeatureSize(1, 1, 2))
+                .dirt(BlockStateProvider.simple(Blocks.END_STONE)).build();
         END_TREE_GENERATION = registerPlacedFeature("end_tree", Feature.TREE.configured(treeConfig),
                 CountPlacement.of(1),
                 InSquarePlacement.spread(),
