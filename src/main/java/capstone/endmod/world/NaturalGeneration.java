@@ -71,8 +71,7 @@ public class NaturalGeneration {
                 EndFeatures.CHORUS_PLANT.placed(CountPlacement.of(UniformInt.of(0, 4)),
                         InSquarePlacement.spread(),
                         HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome(),
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(57), VerticalAnchor.absolute(265))));
+                        BiomeFilter.biome()));
     }
 
     private static void configureMegaEndTree()
