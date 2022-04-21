@@ -136,7 +136,7 @@ public class RegistryHandler {
                 .strength(0.25F)
                 .noOcclusion()
                 .isViewBlocking(RegistryHandler::never)
-
+                .isValidSpawn(RegistryHandler::never)
         )
     );
     public static final RegistryObject<Item> END_TREE_LEAVES_BLOCK_ITEM = ITEMS.register("end_tree_leaves_block", () ->
@@ -146,8 +146,31 @@ public class RegistryHandler {
                             .tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
             )
     );
-    private static boolean never(BlockState p_50806_, BlockGetter p_50807_, BlockPos p_50808_) {
+    public static final RegistryObject<Block> END_SMALL_TREE_LEAVES_BLOCK = BLOCKS.register("end_small_tree_leaves_block",
+            () -> new Block(Block.Properties
+                    .of(Material.LEAVES)
+                    .sound(SoundType.AZALEA_LEAVES)
+                    .lightLevel((state) -> 0)
+                    .strength(0.25F)
+                    .noOcclusion()
+                    .isViewBlocking(RegistryHandler::never)
+                    .isValidSpawn(RegistryHandler::never)
+            )
+    );
+    public static final RegistryObject<Item> END_SMALL_TREE_LEAVES_BLOCK_ITEM = ITEMS.register("end_small_tree_leaves_block", () ->
+            new BlockItem(
+                    END_SMALL_TREE_LEAVES_BLOCK.get(),
+                    new Item.Properties()
+                            .tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+            )
+    );
+    private static boolean never(BlockState p_50806_, BlockGetter p_50807_, BlockPos p_50808_)
+    {
         return false;
+    }
+    private static Boolean never(BlockState p_50779_, BlockGetter p_50780_, BlockPos p_50781_, EntityType<?> p_50782_)
+    {
+        return (boolean)false;
     }
 
 /***************************************
