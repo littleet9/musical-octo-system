@@ -150,6 +150,24 @@ public class RegistryHandler {
         return false;
     }
 
+/***************************************
+    End Tree Trunk
+ ***************************************/
+    public static final RegistryObject<Block> END_TREE_TRUNK_BLOCK = BLOCKS.register("end_tree_trunk_block",
+            () -> new Block(Block.Properties
+                    .of(Material.WOOD)
+                    .sound(SoundType.STONE)
+                    .lightLevel((state) -> 0)
+                    .strength(1)
+                    .noOcclusion()
 
-
+            )
+    );
+    public static final RegistryObject<Item> END_TREE_TRUNK_BLOCK_ITEM = ITEMS.register("end_tree_trunk_block", () ->
+            new BlockItem(
+                    END_TREE_TRUNK_BLOCK.get(),
+                    new Item.Properties()
+                            .tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+            )
+    );
 }

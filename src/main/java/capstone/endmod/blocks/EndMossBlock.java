@@ -39,7 +39,7 @@ public class EndMossBlock extends Block
     public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, net.minecraftforge.common.IPlantable plantable) {
         Block plant = plantable.getPlant(world, pos.relative(facing)).getBlock();
 
-        if (plant == Blocks.CHORUS_PLANT)
+        if (plant == Blocks.CHORUS_PLANT || plant == Blocks.BLUE_ORCHID || plant == Blocks.ALLIUM || plant == Blocks.CORNFLOWER || plant == Blocks.WITHER_ROSE || plant == Blocks.LILAC)
         {
             return true;
         }

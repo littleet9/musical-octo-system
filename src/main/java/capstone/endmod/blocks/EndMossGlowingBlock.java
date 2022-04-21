@@ -3,11 +3,14 @@ package capstone.endmod.blocks;
 import capstone.endmod.EndModRoot;
 import capstone.endmod.RegistryHandler;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -44,6 +47,24 @@ public class EndMossGlowingBlock extends Block
         if(age >= 3)
         {
             p_152729_.setBlockAndUpdate(p_152730_, RegistryHandler.END_MOSS_BLOCK.get().defaultBlockState());
+        }
+    }
+
+    @Override
+    public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, net.minecraftforge.common.IPlantable plantable) {
+        Block plant = plantable.getPlant(world, pos.relative(facing)).getBlock();
+
+        if (plant == Blocks.CHORUS_PLANT || plant == Blocks.BLUE_ORCHID || plant == Blocks.ALLIUM || plant == Blocks.CORNFLOWER || plant == Blocks.WITHER_ROSE || plant == Blocks.LILAC)
+        {
+            return true;
+        }
+        else if (plant == Blocks.CHORUS_FLOWER)
+        {
+            return true;
+        }
+        else
+        {
+            return super.canSustainPlant(state, world, pos, facing, plantable);
         }
     }
 }
