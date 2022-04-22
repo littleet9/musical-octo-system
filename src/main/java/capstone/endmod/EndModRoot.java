@@ -1,6 +1,7 @@
 package capstone.endmod;
 
-import capstone.endmod.world.NaturalGeneration;
+import capstone.endmod.world.gen.AbstractGeneration;
+import capstone.endmod.world.gen.FlowerGeneration;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -27,12 +28,7 @@ public class EndModRoot
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
-   // private static final ResourceLocation ROCK_BLOCK_LOCATION = new ResourceLocation();
-
-
     public EndModRoot() {
-
-
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -48,11 +44,7 @@ public class EndModRoot
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        //LOGGER.info("HELLO FROM PREINIT");
-        //LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-
-        event.enqueueWork(NaturalGeneration::registerConfiguredFeatures);
+        event.enqueueWork(AbstractGeneration::registerConfiguredFeatures);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
