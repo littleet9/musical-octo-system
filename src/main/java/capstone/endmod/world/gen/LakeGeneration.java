@@ -1,5 +1,6 @@
 package capstone.endmod.world.gen;
 
+import capstone.endmod.RegistryHandler;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
@@ -8,10 +9,14 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.LakeFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.ReplaceBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SpringConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.Tags;
 
 import static capstone.endmod.RegistryHandler.END_MOSS_BLOCK;
 import static capstone.endmod.RegistryHandler.END_MOSS_GLOWING_STATIC_BLOCK;
@@ -47,13 +52,32 @@ public class LakeGeneration extends AbstractGeneration
 
     private static void configureSprings()
     {
-        ImmutableSet<Block> validBlocks = ImmutableSet.of(END_MOSS_BLOCK.get(), Blocks.END_STONE);
+        ImmutableSet<Block> validBlocks = ImmutableSet.of(END_MOSS_BLOCK.get(), Blocks.END_STONE, Blocks.AIR);
         int rockCount = 4;
         int holeCount = 1;
-        SpringConfiguration endSpringConfig = new SpringConfiguration(Fluids.WATER.defaultFluidState(), true, rockCount, holeCount, validBlocks);
-        END_SPRING_GENERATION = registerPlacedFeature("end_spring", Feature.SPRING.configured(endSpringConfig),
-                CountPlacement.of(128),
-                BiomeFilter.biome());
-        //addFeature(GenerationStep.Decoration.FLUID_SPRINGS, END_SPRING_GENERATION);
+//        OreConfiguration endSpringConfig = new OreConfiguration(new TagMatchTest(Tags.Blocks.END_STONES), Blocks.WATER.defaultBlockState().randomTick(), 16); //Fluids.WATER.defaultFluidState(), false, rockCount, holeCount, validBlocks);
+//        END_SPRING_GENERATION = registerPlacedFeature("end_spring", Feature.ORE.configured(endSpringConfig),
+//                CountPlacement.of(4),
+//                BiomeFilter.biome(),
+//                HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(50)));
+//        addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, END_SPRING_GENERATION);
+
+//        SpringConfiguration endSpringConfig = new SpringConfiguration(Fluids.WATER.defaultFluidState(), false, rockCount, holeCount, validBlocks);
+//        END_SPRING_GENERATION = registerPlacedFeature("end_spring", Feature.SPRING.configured(endSpringConfig),
+//                CountPlacement.of(4),
+//                BiomeFilter.biome(),
+//                HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(50)));
+//        addFeature(GenerationStep.Decoration.FLUID_SPRINGS, END_SPRING_GENERATION);
+
+//        int veinsize = 64;
+//        int amount = 256;
+//        OreConfiguration endConfig = new OreConfiguration(new TagMatchTest(Tags.Blocks.END_STONES), RegistryHandler.END_MOSS_BLOCK.get().defaultBlockState(), veinsize);
+//        END_MOSS_GENERATION = registerPlacedFeature("end_moss_block", Feature.ORE.configured(endConfig),
+//                CountPlacement.of(amount),
+//                BiomeFilter.biome(),
+//                HeightRangePlacement.uniform(VerticalAnchor.absolute(57), VerticalAnchor.absolute(265)));
+//
+//        addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, END_MOSS_GENERATION);
+
     }
 }
