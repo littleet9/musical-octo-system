@@ -15,7 +15,7 @@ public final class EntityInit {
 
     public static final RegistryObject<EntityType<BunnyEntity>> BUNNY_ENTITY = ENTITIES.register(
             "bunny_entity",
-            () -> EntityType.Builder.of(BunnyEntity::new, MobCategory.CREATURE).sized(0.8f, 0.6f)
+            () -> EntityType.Builder.of(BunnyEntity::new, MobCategory.CREATURE).sized(0.8f, 0.6f).clientTrackingRange(10)
                     .build(new ResourceLocation(EndModRoot.MODID, "bunny_entity").toString()));
 
     private EntityInit()

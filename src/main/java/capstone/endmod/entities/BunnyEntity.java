@@ -60,9 +60,8 @@ public class BunnyEntity extends FlyingMob {
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
     }
 
-    public static boolean canSpawn(EntityType<BunnyEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType,
-                                   BlockPos pos, Random random) {
-        return true;
+    public static boolean canSpawn(EntityType<BunnyEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType, BlockPos pos, Random random) {
+        return random.nextBoolean();
         //return checkBunnySpawnRules(entity, levelAccess, spawnType, pos, random) && pos.getY() > 2;
     }
 
