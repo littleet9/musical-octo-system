@@ -1,10 +1,10 @@
 {
-  "block.endmod.end_moss_block": "End Moss Block",
-  "block.endmod.end_moss_glowing_block": "End Moss Glowing Block",
-  "block.endmod.end_moss_glowing_static_block": "End Moss Glowing Block",
-  "block.endmod.end_moss_light_block": "End Moss Light Block",
-  "block.endmod.end_moss_light_static_block": "End Moss Light Block",
-  "block.endmod.end_tree_leaves_block": "End Tree Leaves Block",
-  "block.endmod.end_small_tree_leaves_block": "End Small Tree Leaves Block",
-  "block.endmod.end_tree_trunk_block": "End Tree Trunk Block"
+  "block.endmod.end_moss_block": "End Moss",
+  "block.endmod.end_moss_glowing_block": "End Moss Glowing",
+  "block.endmod.end_moss_glowing_static_block": "End Moss Glowing",
+  "block.endmod.end_moss_light_block": "End Moss Light",
+  "block.endmod.end_moss_light_static_block": "End Moss Light",
+  "block.endmod.end_tree_leaves_block": "End Tree Leaves",
+  "block.endmod.end_small_tree_leaves_block": "End Bush Leaves",
+  "block.endmod.end_tree_trunk_block": "End Tree Trunk"
 }

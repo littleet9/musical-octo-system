@@ -43,7 +43,7 @@ public abstract class AbstractGeneration
         decorativeFeatures.add(new DecorativeFeature(decoration, feature));
     }
 
-    @SubscribeEvent(priority = EventPriority.HIGH)
+    @SubscribeEvent(priority = EventPriority.HIGHEST    )
     public static void biomeLoading(final BiomeLoadingEvent event)
     {
         if (event.getCategory() == Biome.BiomeCategory.THEEND)
