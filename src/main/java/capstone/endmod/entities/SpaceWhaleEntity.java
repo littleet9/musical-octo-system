@@ -100,10 +100,10 @@ public class SpaceWhaleEntity extends FlyingMob {
 
         public void start() {
             Random random = this.spaceWhale.getRandom();
-            double d0 = this.spaceWhale.getX() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            double d1 = this.spaceWhale.getY() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            double d2 = this.spaceWhale.getZ() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            this.spaceWhale.getMoveControl().setWantedPosition(d0, d1, d2, 1.0D);
+            double d0 = this.spaceWhale.getX() + (double)((random.nextFloat() * 2.0F - 1.0F) * 32.0F);
+            double d1 = this.spaceWhale.getY() + (double)((random.nextFloat() * 2.0F - 1.0F) * 4.0F);
+            double d2 = this.spaceWhale.getZ() + (double)((random.nextFloat() * 2.0F - 1.0F) * 32.0F);
+            this.spaceWhale.getMoveControl().setWantedPosition(d0, d1, d2, 1);
         }
     }
 
@@ -124,7 +124,7 @@ public class SpaceWhaleEntity extends FlyingMob {
                     double d0 = vec3.length();
                     vec3 = vec3.normalize();
                     if (this.canReach(vec3, Mth.ceil(d0))) {
-                        this.spaceWhale.setDeltaMovement(this.spaceWhale.getDeltaMovement().add(vec3.scale(0.1D)));
+                        this.spaceWhale.setDeltaMovement(this.spaceWhale.getDeltaMovement().add(vec3.scale(0.04D)));
                     } else {
                         this.operation = MoveControl.Operation.WAIT;
                     }

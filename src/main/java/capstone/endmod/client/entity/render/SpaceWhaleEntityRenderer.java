@@ -3,9 +3,11 @@ package capstone.endmod.client.entity.render;
 import capstone.endmod.EndModRoot;
 import capstone.endmod.client.entity.model.SpaceWhaleEntityModel;
 import capstone.endmod.entities.SpaceWhaleEntity;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.monster.Ghast;
 
 public class SpaceWhaleEntityRenderer<Type extends SpaceWhaleEntity> extends MobRenderer<Type, SpaceWhaleEntityModel<Type>> {
 
