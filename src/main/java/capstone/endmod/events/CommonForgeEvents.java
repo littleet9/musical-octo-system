@@ -15,7 +15,7 @@ public class CommonForgeEvents {
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void biomeLoading(BiomeLoadingEvent event) {
         if (event.getName().equals(new ResourceLocation("minecraft:small_end_islands")) || event.getName().equals(new ResourceLocation("minecraft:end_barrens"))) {
-            event.getSpawns().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityInit.BUNNY_ENTITY.get(), 5, 1, 1));
+            event.getSpawns().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityInit.SPACE_WHALE_ENTITY.get(), 5, 1, 1));
         }
     }
 }

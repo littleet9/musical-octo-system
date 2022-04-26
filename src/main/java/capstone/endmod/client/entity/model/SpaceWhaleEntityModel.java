@@ -1,7 +1,7 @@
 package capstone.endmod.client.entity.model;
 
 import capstone.endmod.EndModRoot;
-import capstone.endmod.entities.BunnyEntity;
+import capstone.endmod.entities.SpaceWhaleEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
@@ -11,13 +11,13 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 
-public class BunnyEntityModel<Type extends BunnyEntity> extends EntityModel<Type> {
+public class SpaceWhaleEntityModel<Type extends SpaceWhaleEntity> extends EntityModel<Type> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
-            new ResourceLocation(EndModRoot.MODID, "bunny_entity"), "main");
+            new ResourceLocation(EndModRoot.MODID, "space_whale_entity"), "main");
 
     private final ModelPart body;
 
-    public BunnyEntityModel(ModelPart root) {
+    public SpaceWhaleEntityModel(ModelPart root) {
         this.body = root.getChild("bb_main");
     }
 

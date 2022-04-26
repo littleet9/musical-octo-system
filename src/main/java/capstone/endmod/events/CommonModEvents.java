@@ -1,7 +1,7 @@
 package capstone.endmod.events;
 
 import capstone.endmod.EndModRoot;
-import capstone.endmod.entities.BunnyEntity;
+import capstone.endmod.entities.SpaceWhaleEntity;
 import capstone.endmod.init.EntityInit;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -16,13 +16,13 @@ public class CommonModEvents
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            SpawnPlacements.register(EntityInit.BUNNY_ENTITY.get(), SpawnPlacements.Type.ON_GROUND,
-                    Heightmap.Types.WORLD_SURFACE, BunnyEntity::canSpawn);
+            SpawnPlacements.register(EntityInit.SPACE_WHALE_ENTITY.get(), SpawnPlacements.Type.ON_GROUND,
+                    Heightmap.Types.WORLD_SURFACE, SpaceWhaleEntity::canSpawn);
         });
     }
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
-        event.put(EntityInit.BUNNY_ENTITY.get(), BunnyEntity.createAttributes().build());
+        event.put(EntityInit.SPACE_WHALE_ENTITY.get(), SpaceWhaleEntity.createAttributes().build());
     }
 }

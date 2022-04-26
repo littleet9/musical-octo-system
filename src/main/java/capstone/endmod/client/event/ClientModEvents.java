@@ -1,8 +1,8 @@
 package capstone.endmod.client.event;
 
 import capstone.endmod.EndModRoot;
-import capstone.endmod.client.entity.model.BunnyEntityModel;
-import capstone.endmod.client.entity.render.BunnyEntityRenderer;
+import capstone.endmod.client.entity.model.SpaceWhaleEntityModel;
+import capstone.endmod.client.entity.render.SpaceWhaleEntityRenderer;
 import capstone.endmod.init.EntityInit;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -26,12 +26,12 @@ public final class ClientModEvents
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
     {
-        event.registerLayerDefinition(BunnyEntityModel.LAYER_LOCATION, BunnyEntityModel::createBodyLayer);
+        event.registerLayerDefinition(SpaceWhaleEntityModel.LAYER_LOCATION, SpaceWhaleEntityModel::createBodyLayer);
     }
 
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event)
     {
-        event.registerEntityRenderer(EntityInit.BUNNY_ENTITY.get(), BunnyEntityRenderer::new);
+        event.registerEntityRenderer(EntityInit.SPACE_WHALE_ENTITY.get(), SpaceWhaleEntityRenderer::new);
     }
 }

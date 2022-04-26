@@ -22,15 +22,15 @@ import net.minecraft.world.phys.Vec3;
 import java.util.EnumSet;
 import java.util.Random;
 
-public class BunnyEntity extends FlyingMob {
+public class SpaceWhaleEntity extends FlyingMob {
 
     private static final ResourceLocation LOOT_TABLE = new ResourceLocation(EndModRoot.MODID,
-            "entities/bunny_entity");
+            "entities/space_whale_entity");
 
-    public BunnyEntity(EntityType<? extends FlyingMob> p_27557_, Level p_27558_)
+    public SpaceWhaleEntity(EntityType<? extends FlyingMob> p_27557_, Level p_27558_)
     {
         super(p_27557_, p_27558_);
-        this.moveControl = new BunnyEntity.BunnyMoveControl(this);
+        this.moveControl = new SpaceWhaleEntity.SpaceWhaleMoveControl(this);
     }
 
     @Override
@@ -55,17 +55,17 @@ public class BunnyEntity extends FlyingMob {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(2, new BunnyEntity.RandomFloatAroundGoal(this));
+        this.goalSelector.addGoal(2, new SpaceWhaleEntity.RandomFloatAroundGoal(this));
         this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
     }
 
-    public static boolean canSpawn(EntityType<BunnyEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<SpaceWhaleEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType, BlockPos pos, Random random) {
         return random.nextBoolean();
-        //return checkBunnySpawnRules(entity, levelAccess, spawnType, pos, random) && pos.getY() > 2;
+        //return checkSpaceWhaleSpawnRules(entity, levelAccess, spawnType, pos, random) && pos.getY() > 2;
     }
 
-    public static boolean checkBunnySpawnRules(EntityType<? extends FlyingMob> p_27578_, LevelAccessor p_27579_, MobSpawnType p_27580_, BlockPos p_27581_, Random p_27582_) {
+    public static boolean checkSpaceWhaleSpawnRules(EntityType<? extends FlyingMob> p_27578_, LevelAccessor p_27579_, MobSpawnType p_27580_, BlockPos p_27581_, Random p_27582_) {
         return p_27579_.getBlockState(p_27581_.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON);
     }
 
@@ -74,21 +74,21 @@ public class BunnyEntity extends FlyingMob {
     }
 
     static class RandomFloatAroundGoal extends Goal {
-        private final BunnyEntity bunny;
+        private final SpaceWhaleEntity spaceWhale;
 
-        public RandomFloatAroundGoal(BunnyEntity p_32783_) {
-            this.bunny = p_32783_;
+        public RandomFloatAroundGoal(SpaceWhaleEntity p_32783_) {
+            this.spaceWhale = p_32783_;
             this.setFlags(EnumSet.of(Goal.Flag.MOVE));
         }
 
         public boolean canUse() {
-            MoveControl movecontrol = this.bunny.getMoveControl();
+            MoveControl movecontrol = this.spaceWhale.getMoveControl();
             if (!movecontrol.hasWanted()) {
                 return true;
             } else {
-                double d0 = movecontrol.getWantedX() - this.bunny.getX();
-                double d1 = movecontrol.getWantedY() - this.bunny.getY();
-                double d2 = movecontrol.getWantedZ() - this.bunny.getZ();
+                double d0 = movecontrol.getWantedX() - this.spaceWhale.getX();
+                double d1 = movecontrol.getWantedY() - this.spaceWhale.getY();
+                double d2 = movecontrol.getWantedZ() - this.spaceWhale.getZ();
                 double d3 = d0 * d0 + d1 * d1 + d2 * d2;
                 return d3 < 1.0D || d3 > 3600.0D;
             }
@@ -99,46 +99,49 @@ public class BunnyEntity extends FlyingMob {
         }
 
         public void start() {
-            Random random = this.bunny.getRandom();
-            double d0 = this.bunny.getX() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            double d1 = this.bunny.getY() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            double d2 = this.bunny.getZ() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            this.bunny.getMoveControl().setWantedPosition(d0, d1, d2, 1.0D);
+            Random random = this.spaceWhale.getRandom();
+            double d0 = this.spaceWhale.getX() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
+            double d1 = this.spaceWhale.getY() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
+            double d2 = this.spaceWhale.getZ() + (double)((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
+            this.spaceWhale.getMoveControl().setWantedPosition(d0, d1, d2, 1.0D);
         }
     }
 
-    static class BunnyMoveControl extends MoveControl {
-        private final BunnyEntity bunny;
+    static class SpaceWhaleMoveControl extends MoveControl {
+        private final SpaceWhaleEntity spaceWhale;
         private int floatDuration;
 
-        public BunnyMoveControl(BunnyEntity p_32768_) {
+        public SpaceWhaleMoveControl(SpaceWhaleEntity p_32768_) {
             super(p_32768_);
-            this.bunny = p_32768_;
+            this.spaceWhale = p_32768_;
         }
 
         public void tick() {
             if (this.operation == MoveControl.Operation.MOVE_TO) {
                 if (this.floatDuration-- <= 0) {
-                    this.floatDuration += this.bunny.getRandom().nextInt(5) + 2;
-                    Vec3 vec3 = new Vec3(this.wantedX - this.bunny.getX(), this.wantedY - this.bunny.getY(), this.wantedZ - this.bunny.getZ());
+                    this.floatDuration += this.spaceWhale.getRandom().nextInt(5) + 2;
+                    Vec3 vec3 = new Vec3(this.wantedX - this.spaceWhale.getX(), this.wantedY - this.spaceWhale.getY(), this.wantedZ - this.spaceWhale.getZ());
                     double d0 = vec3.length();
                     vec3 = vec3.normalize();
                     if (this.canReach(vec3, Mth.ceil(d0))) {
-                        this.bunny.setDeltaMovement(this.bunny.getDeltaMovement().add(vec3.scale(0.1D)));
+                        this.spaceWhale.setDeltaMovement(this.spaceWhale.getDeltaMovement().add(vec3.scale(0.1D)));
                     } else {
                         this.operation = MoveControl.Operation.WAIT;
                     }
                 }
-
+                //Look toward direction
+                Vec3 vec3 = this.spaceWhale.getDeltaMovement();
+                this.spaceWhale.setYRot(-((float)Mth.atan2(vec3.x, vec3.z)) * (180F / (float)Math.PI));
+                this.spaceWhale.yBodyRot = this.spaceWhale.getYRot();
             }
         }
 
         private boolean canReach(Vec3 p_32771_, int p_32772_) {
-            AABB aabb = this.bunny.getBoundingBox();
+            AABB aabb = this.spaceWhale.getBoundingBox();
 
             for(int i = 1; i < p_32772_; ++i) {
                 aabb = aabb.move(p_32771_);
-                if (!this.bunny.level.noCollision(this.bunny, aabb)) {
+                if (!this.spaceWhale.level.noCollision(this.spaceWhale, aabb)) {
                     return false;
                 }
             }
