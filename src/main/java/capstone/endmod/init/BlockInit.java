@@ -111,5 +111,12 @@ public class BlockInit
             )
     );
 
+    public static final RegistryObject<Block> JAI_PLANKS_BLOCK = BLOCKS.register("jai_planks_block",
+            () -> new Block(Block.Properties
+                    .of(Material.WOOD)
+                    .sound(SoundType.WOOD)
+            )
+    );
+
 
 }

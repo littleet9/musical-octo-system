@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " / ",
+    " / "
+  ],
+  "key": {
+    "#": {
+      "item": "endmod:jai_planks_block"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "minecraft:wooden_shovel"
+  }
+}

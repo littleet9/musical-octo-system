@@ -1,6 +1,7 @@
 {
-  "parent": "block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "endmod:blocks/end_tree_trunk_block"
+    "end": "endmod:blocks/end_tree_trunk_top",
+    "side": "endmod:blocks/end_tree_trunk_side"
   }
 }

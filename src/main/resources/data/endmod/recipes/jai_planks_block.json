@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "endmod:end_tree_trunk_block"
+    }
+  ],
+  "result": {
+    "item": "endmod:jai_planks_block",
+    "count": 4
+  }
+}

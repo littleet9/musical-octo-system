@@ -69,4 +69,11 @@ public class ItemInit
             )
     );
 
+    public static final RegistryObject<Item> JAI_PLANKS_BLOCK_ITEM = ITEMS.register("jai_planks_block", () ->
+            new BlockItem(
+                    JAI_PLANKS_BLOCK.get(),
+                    new Item.Properties()
+                            .tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+            )
+    );
 }
