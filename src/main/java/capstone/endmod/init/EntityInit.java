@@ -15,7 +15,7 @@ public final class EntityInit {
 
     public static final RegistryObject<EntityType<SpaceWhaleEntity>> SPACE_WHALE_ENTITY = ENTITIES.register(
             "space_whale_entity",
-            () -> EntityType.Builder.of(SpaceWhaleEntity::new, MobCategory.CREATURE).sized(0.8f, 0.6f).clientTrackingRange(10).sized(10, 4)
+            () -> EntityType.Builder.of(SpaceWhaleEntity::new, MobCategory.CREATURE).clientTrackingRange(10).sized(10, 4)
                     .build(new ResourceLocation(EndModRoot.MODID, "space_whale_entity").toString()));
 
     private EntityInit()

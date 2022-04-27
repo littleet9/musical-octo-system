@@ -55,7 +55,7 @@ public class LakeGeneration extends AbstractGeneration
         ImmutableSet<Block> validBlocks = ImmutableSet.of(END_MOSS_BLOCK.get(), Blocks.END_STONE, Blocks.AIR);
         int rockCount = 4;
         int holeCount = 1;
-//        OreConfiguration endSpringConfig = new OreConfiguration(new TagMatchTest(Tags.Blocks.END_STONES), Blocks.WATER.defaultBlockState().randomTick(), 16); //Fluids.WATER.defaultFluidState(), false, rockCount, holeCount, validBlocks);
+//        OreConfiguration endSpringConfig = new OreConfiguration(new TagMatchTest(Tags.Blocks.END_STONES), Blocks.WATER.defaultBlockState(), 16); //Fluids.WATER.defaultFluidState(), false, rockCount, holeCount, validBlocks);
 //        END_SPRING_GENERATION = registerPlacedFeature("end_spring", Feature.ORE.configured(endSpringConfig),
 //                CountPlacement.of(4),
 //                BiomeFilter.biome(),
@@ -64,10 +64,12 @@ public class LakeGeneration extends AbstractGeneration
 
 //        SpringConfiguration endSpringConfig = new SpringConfiguration(Fluids.WATER.defaultFluidState(), false, rockCount, holeCount, validBlocks);
 //        END_SPRING_GENERATION = registerPlacedFeature("end_spring", Feature.SPRING.configured(endSpringConfig),
-//                CountPlacement.of(4),
+//                CountPlacement.of(25),
+//                InSquarePlacement.spread(),
 //                BiomeFilter.biome(),
 //                HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(50)));
 //        addFeature(GenerationStep.Decoration.FLUID_SPRINGS, END_SPRING_GENERATION);
+
 
 //        int veinsize = 64;
 //        int amount = 256;

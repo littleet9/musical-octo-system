@@ -61,12 +61,7 @@ public class SpaceWhaleEntity extends FlyingMob {
     }
 
     public static boolean canSpawn(EntityType<SpaceWhaleEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType, BlockPos pos, Random random) {
-        return random.nextBoolean();
-        //return checkSpaceWhaleSpawnRules(entity, levelAccess, spawnType, pos, random) && pos.getY() > 2;
-    }
-
-    public static boolean checkSpaceWhaleSpawnRules(EntityType<? extends FlyingMob> p_27578_, LevelAccessor p_27579_, MobSpawnType p_27580_, BlockPos p_27581_, Random p_27582_) {
-        return p_27579_.getBlockState(p_27581_.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON);
+        return true;
     }
 
     public static AttributeSupplier.Builder createAttributes() {
