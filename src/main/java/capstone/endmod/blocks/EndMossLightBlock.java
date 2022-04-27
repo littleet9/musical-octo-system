@@ -1,7 +1,7 @@
 package capstone.endmod.blocks;
 
 import capstone.endmod.EndModRoot;
-import capstone.endmod.RegistryHandler;
+import capstone.endmod.init.BlockInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -36,7 +36,7 @@ public class EndMossLightBlock extends Block
         age = age + 1;
         if(age >= 7)
         {
-            p_152729_.setBlockAndUpdate(p_152730_, RegistryHandler.END_MOSS_GLOWING_BLOCK.get().defaultBlockState());
+            p_152729_.setBlockAndUpdate(p_152730_, BlockInit.END_MOSS_GLOWING_BLOCK.get().defaultBlockState());
         }
     }
 

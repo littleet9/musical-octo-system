@@ -1,6 +1,5 @@
 package capstone.endmod.world.gen;
 
-import capstone.endmod.RegistryHandler;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
@@ -18,8 +17,8 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.Tags;
 
-import static capstone.endmod.RegistryHandler.END_MOSS_BLOCK;
-import static capstone.endmod.RegistryHandler.END_MOSS_GLOWING_STATIC_BLOCK;
+import static capstone.endmod.init.BlockInit.END_MOSS_BLOCK;
+import static capstone.endmod.init.BlockInit.END_MOSS_GLOWING_STATIC_BLOCK;
 import static net.minecraft.data.worldgen.placement.PlacementUtils.HEIGHTMAP_WORLD_SURFACE;
 
 public class LakeGeneration extends AbstractGeneration

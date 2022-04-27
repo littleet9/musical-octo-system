@@ -1,7 +1,7 @@
 package capstone.endmod.blocks;
 
 import capstone.endmod.EndModRoot;
-import capstone.endmod.RegistryHandler;
+import capstone.endmod.init.BlockInit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
@@ -27,11 +27,11 @@ public class EndMossBlock extends Block
     public void stepOn(Level p_152431_, BlockPos p_152432_, BlockState p_152433_, Entity p_152434_) {
         if (p_152434_.getType() == EntityType.PLAYER)
         {
-            p_152431_.setBlockAndUpdate(p_152432_, RegistryHandler.END_MOSS_LIGHT_BLOCK.get().defaultBlockState());
+            p_152431_.setBlockAndUpdate(p_152432_, BlockInit.END_MOSS_LIGHT_BLOCK.get().defaultBlockState());
         }
         else
         {
-            p_152431_.setBlockAndUpdate(p_152432_, RegistryHandler.END_MOSS_GLOWING_BLOCK.get().defaultBlockState());
+            p_152431_.setBlockAndUpdate(p_152432_, BlockInit.END_MOSS_GLOWING_BLOCK.get().defaultBlockState());
         }
     }
 

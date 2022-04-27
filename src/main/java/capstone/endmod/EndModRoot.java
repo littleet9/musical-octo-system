@@ -1,9 +1,9 @@
 package capstone.endmod;
 
+import capstone.endmod.init.BlockInit;
 import capstone.endmod.init.EntityInit;
 import capstone.endmod.init.ItemInit;
 import capstone.endmod.world.gen.AbstractGeneration;
-import capstone.endmod.world.gen.FlowerGeneration;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -31,7 +31,6 @@ public class EndModRoot
     private static final Logger LOGGER = LogManager.getLogger();
 
     public EndModRoot() {
-
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -45,10 +44,9 @@ public class EndModRoot
 
         final var bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-
-        RegistryHandler.init();
-        EntityInit.ENTITIES.register(bus);
+        BlockInit.BLOCKS.register(bus);
         ItemInit.ITEMS.register(bus);
+        EntityInit.ENTITIES.register(bus);
     }
 
     private void setup(final FMLCommonSetupEvent event)

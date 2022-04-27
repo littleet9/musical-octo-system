@@ -18,7 +18,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.MegaJungleTrunkPl
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.*;
 
-import static capstone.endmod.RegistryHandler.*;
+import static capstone.endmod.init.BlockInit.*;
 import static net.minecraft.data.worldgen.placement.PlacementUtils.HEIGHTMAP_WORLD_SURFACE;
 
 public class TreeGeneration extends AbstractGeneration

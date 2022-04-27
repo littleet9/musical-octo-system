@@ -1,6 +1,6 @@
 package capstone.endmod.world.gen;
 
-import capstone.endmod.RegistryHandler;
+import capstone.endmod.init.BlockInit;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -22,7 +22,7 @@ public class MossGeneration extends AbstractGeneration
     {
         int veinsize = 64;
         int amount = 256;
-        OreConfiguration endConfig = new OreConfiguration(new TagMatchTest(Tags.Blocks.END_STONES), RegistryHandler.END_MOSS_BLOCK.get().defaultBlockState(), veinsize);
+        OreConfiguration endConfig = new OreConfiguration(new TagMatchTest(Tags.Blocks.END_STONES), BlockInit.END_MOSS_BLOCK.get().defaultBlockState(), veinsize);
         END_MOSS_GENERATION = registerPlacedFeature("end_moss_block", Feature.ORE.configured(endConfig),
                 CountPlacement.of(amount),
                 InSquarePlacement.spread(),
