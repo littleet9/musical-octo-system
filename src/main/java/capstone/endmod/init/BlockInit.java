@@ -7,8 +7,7 @@ import capstone.endmod.blocks.EndMossLightBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
@@ -111,12 +110,9 @@ public class BlockInit
             )
     );
 
-    public static final RegistryObject<Block> JAI_PLANKS_BLOCK = BLOCKS.register("jai_planks_block",
-            () -> new Block(Block.Properties
-                    .of(Material.WOOD)
-                    .sound(SoundType.WOOD)
-            )
-    );
+    public static final RegistryObject<Block> JAI_PLANKS_BLOCK = BLOCKS.register("jai_planks_block", () -> new Block(Block.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> JAI_SLAB = BLOCKS.register("jai_slab",() -> new Block(SlabBlock.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> JAI_STAIRS = BLOCKS.register("jai_stairs",() -> new Block(StairBlock.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
 
 
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "endmod:blocks/jai_planks_block",
+    "top": "endmod:blocks/jai_planks_block",
+    "side": "endmod:blocks/jai_planks_block"
+  }
+}

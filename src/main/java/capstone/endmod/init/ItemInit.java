@@ -76,4 +76,20 @@ public class ItemInit
                             .tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
             )
     );
+
+    public static final RegistryObject<Item> JAI_SLAB_ITEM = ITEMS.register("jai_slab", () ->
+            new BlockItem(
+                    JAI_SLAB.get(),
+                    new Item.Properties()
+                            .tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+            )
+    );
+
+    public static final RegistryObject<Item> JAI_STAIRS_ITEM = ITEMS.register("jai_stairs", () ->
+            new BlockItem(
+                    JAI_STAIRS.get(),
+                    new Item.Properties()
+                            .tab(CreativeModeTab.TAB_BUILDING_BLOCKS)
+            )
+    );
 }

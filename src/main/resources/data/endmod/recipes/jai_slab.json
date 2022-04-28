@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "endmod:jai_planks_block"
+    }
+  },
+  "result": {
+    "item": "endmod:jai_slab",
+    "count": 6
+  }
+}

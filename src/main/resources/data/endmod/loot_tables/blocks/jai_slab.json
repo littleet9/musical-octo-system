@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:slab",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "endmod:jai_slab"
+        }
+      ]
+    }
+  ]
+}
